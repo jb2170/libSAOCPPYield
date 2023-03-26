@@ -10,7 +10,9 @@ struct ExampleYieldRoutineLocals {
   int index;
 };
 
-typedef YieldRoutine<ExampleYieldRoutineLocals, std::unique_ptr<int>> TExampleYieldRoutine;
+typedef ExampleYieldRoutineLocals TLocals;
+typedef std::unique_ptr<int> TYield;
+typedef YieldRoutine<TLocals, TYield> TExampleYieldRoutine;
 
 void func1(TExampleYieldRoutine &yr) {
   return yr.yield_value_continue(std::make_unique<int>(100));
@@ -35,7 +37,7 @@ void func3(TExampleYieldRoutine &yr) {
 int main() {
   TExampleYieldRoutine yr({ func1, func2, func3 });
 
-  for (auto i : yr.run()) {
+  for (TYield &i : yr.run()) {
     std::printf("%i\n", *i);
   }
 

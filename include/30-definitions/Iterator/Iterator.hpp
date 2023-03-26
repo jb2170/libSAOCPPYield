@@ -13,14 +13,14 @@ namespace SAO::Yield::Iterator {
     SAO::Iterator::Iterator<
     YieldRoutine<TLocals, TYield>,
     State<TLocals, TYield>,
-    TYield
+    TYield &
     >(iterable) {
     this->iterable.run_routines_until_yield();
   }
 
   template <typename TLocals, typename TYield>
-  TYield Iterator<TLocals, TYield>::operator*() {
-    return std::move(this->iterable.yielded_result);
+  TYield &Iterator<TLocals, TYield>::operator*() {
+    return this->iterable.yielded_result;
   }
 
   template <typename TLocals, typename TYield>

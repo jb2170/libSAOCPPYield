@@ -13,11 +13,11 @@ namespace SAO::Yield::Iterator {
   struct Iterator : SAO::Iterator::Iterator<
     YieldRoutine<TLocals, TYield>,
     State<TLocals, TYield>,
-    TYield
+    TYield &
   > {
     Iterator(YieldRoutine<TLocals, TYield> &iterable);
 
-    TYield operator*();
+    TYield &operator*();
 
     bool operator!=(const ssize_t &i);
 
