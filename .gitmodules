@@ -1,0 +1,3 @@
+[submodule "subprojects/libSAOCPPIterator"]
+	path = subprojects/libSAOCPPIterator
+	url = git@github.com:jb2170/libSAOCPPIterator.git
